@@ -1,0 +1,28 @@
+{
+    "name": "giftuals/tokenizer",
+    "description": "Trustworthy links from and to your website or webapp",
+    "homepage" : "https://tokenizer.giftuals.com",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Coen Coppens",
+            "email": "coen.coppens@giftuals.com",
+            "role": "Lead developer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.2.0"
+    },
+    "require-dev": {
+        "kint-php/kint": "dev-master",
+        "phpunit/phpunit": "^8"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tokenizer\\": "src/",
+            "TokenizerTest\\": "tests/"
+        }
+     }
+}
