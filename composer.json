@@ -1,6 +1,6 @@
 {
     "name": "giftuals/tokenizer",
-    "description": "Trustworthy links from and to your website or webapp",
+    "description": "PHP JWT library that allows you to create trustworthy links from and to your website or webapp",
     "homepage" : "https://tokenizer.giftuals.com",
     "type": "library",
     "license": "MIT",
