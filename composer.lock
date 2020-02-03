@@ -69,12 +69,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kint-php/kint.git",
-                "reference": "5459781c835778a377321b47de87cec5daab90b7"
+                "reference": "b8acac7c9b767d8c9da56db3b8827e9c8a9d6205"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kint-php/kint/zipball/5459781c835778a377321b47de87cec5daab90b7",
-                "reference": "5459781c835778a377321b47de87cec5daab90b7",
+                "url": "https://api.github.com/repos/kint-php/kint/zipball/b8acac7c9b767d8c9da56db3b8827e9c8a9d6205",
+                "reference": "b8acac7c9b767d8c9da56db3b8827e9c8a9d6205",
                 "shasum": ""
             },
             "require": {
@@ -131,7 +131,7 @@
                 "kint",
                 "php"
             ],
-            "time": "2020-01-14T20:03:41+00:00"
+            "time": "2020-02-01T09:28:39+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -345,12 +345,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-                "reference": "93919e334b0cb304fb04429b4b3a3b1e1787c873"
+                "reference": "da71602ae92163cfa94f5e5dbdd969629e060a05"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/93919e334b0cb304fb04429b4b3a3b1e1787c873",
-                "reference": "93919e334b0cb304fb04429b4b3a3b1e1787c873",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/da71602ae92163cfa94f5e5dbdd969629e060a05",
+                "reference": "da71602ae92163cfa94f5e5dbdd969629e060a05",
                 "shasum": ""
             },
             "require": {
@@ -390,7 +390,7 @@
                 }
             ],
             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
-            "time": "2020-01-27T20:01:09+00:00"
+            "time": "2020-02-02T19:24:25+00:00"
         },
         {
             "name": "phpdocumentor/type-resolver",
@@ -398,12 +398,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/TypeResolver.git",
-                "reference": "28517b98024f4d578e7a0774fa4a73ca2a73c724"
+                "reference": "0708a5714a03b5b27a65786543503d9d3ee50e07"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/28517b98024f4d578e7a0774fa4a73ca2a73c724",
-                "reference": "28517b98024f4d578e7a0774fa4a73ca2a73c724",
+                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/0708a5714a03b5b27a65786543503d9d3ee50e07",
+                "reference": "0708a5714a03b5b27a65786543503d9d3ee50e07",
                 "shasum": ""
             },
             "require": {
@@ -436,7 +436,7 @@
                 }
             ],
             "description": "A PSR-5 based resolver of Class names, Types and Structural Element Names",
-            "time": "2019-12-27T21:51:48+00:00"
+            "time": "2020-02-02T19:26:52+00:00"
         },
         {
             "name": "phpspec/prophecy",
