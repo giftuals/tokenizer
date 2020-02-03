@@ -7,18 +7,12 @@ use Tokenizer\Exception\ConfigurationException;
 
 class Config extends ArrayObject
 {
-    public function __construct()
+    public function __construct(array $settings = [])
     {
-        $this->config = new ArrayObject();
-        if (!\file_exists(__DIR__ . '/settings.php')) {
-            throw new ConfigurationException('Your settings.php file missing.');
-        }
-        $settings = require_once(__DIR__ . '/settings.php');
-        if (!is_array($settings)) {
-            throw new ConfigurationException('Your settings.php doesn\'t contain a settings array.');
-        }
-        foreach ($settings as $setting => $value) {
-            $this->offsetSet($setting, $value);
+        if (0 < count($settings)) {
+            foreach ($settings as $setting => $value) {
+                $this->offsetSet($setting, $value);
+            }
         }
     }
 }
