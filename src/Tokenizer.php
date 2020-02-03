@@ -42,16 +42,42 @@ class Tokenizer
      */
     private $config;
 
+    /**
+     *
+     * @throws ConfigurationException
+     */
     public function __construct(Config $config)
     {
-        $this->config = $config;
+        if ($this->isValidConfig($config)) {
+            $this->config = $config;
+        }
     }
 
     /**
      *
      * @throws ConfigurationException
      */
-    public function createToken(array $payload) : string
+    private function isValidConfig(Config $config) : bool
+    {
+        if (false === $config->offsetExists(self::HASH_HMAC_KEY)) {
+            throw new ConfigurationException('Setting "' . self::HASH_HMAC_KEY . '" is not specified');
+        }
+
+        $configurable_claims = [
+            self::CLAIM_ISSUER,
+            self::CLAIM_SUBJECT,
+            self::CLAIM_AUDIENCE,
+        ];
+        foreach ($configurable_claims as $claim) {
+            if (false === $config->offsetExists($claim)) {
+                throw new ConfigurationException('Setting "' . $claim . '" is not specified');
+            }
+            $required_payload[$claim] = $config->offsetGet($claim);
+        }
+        return true;
+    }
+
+    public function createToken(array $payload = []) : string
     {
         $header = array(
             self::CLAIM_ALGORITHM => 'HS256',
@@ -110,44 +136,29 @@ class Tokenizer
         ];
     }
 
-    /**
-     *
-     * @throws ConfigurationException
-     */
     private function getRequiredPayload(Config $config) : array
     {
-        $date = new DateTime();
-        $timezone = $date->getTimezone();
-        $required_payload = [
-            self::CLAIM_ISSUED_AT => date('d-m-Y H:i:s'),
-            self::CLAIM_TIMEZONE => $timezone->getName(),
-        ];
-
-        $configurable_claims = [
-            self::CLAIM_ISSUER,
-            self::CLAIM_SUBJECT,
-            self::CLAIM_AUDIENCE,
-        ];
-
-        foreach ($configurable_claims as $claim) {
-            if (false === $config->offsetExists($claim)) {
-                throw new ConfigurationException('Setting "' . $claim . '" is not specified in your settings.php file.');
-            }
-            $required_payload[$claim] = $config->offsetGet($claim);
+        if ($config->offsetExists(self::CLAIM_ISSUED_AT)) {
+            $issued_at = $config->offsetGet(self::CLAIM_ISSUED_AT);
+        } else {
+            $issued_at = date('d-m-Y H:i:s');
         }
+        if ($config->offsetExists(self::CLAIM_TIMEZONE)) {
+            $timezone_name = $config->offsetGet(self::CLAIM_TIMEZONE);
+        } else {
+            $date = new DateTime();
+            $timezone = $date->getTimezone();
+            $timezone_name = $timezone->getName();
+        }
+        $required_payload = [
+            self::CLAIM_ISSUED_AT => $issued_at,
+            self::CLAIM_TIMEZONE => $timezone_name,
+        ];
         return $required_payload;
     }
 
-    /**
-     *
-     * @throws ConfigurationException
-     */
     private function createSignature($header, $payload, Config $config) : string
     {
-        if (false === $config->offsetExists(self::HASH_HMAC_KEY)) {
-            throw new ConfigurationException('Setting "' . self::HASH_HMAC_KEY . '" is not specified in your settings.php file.');
-        }
-
         $signature = hash_hmac(
             'sha256',
             $header . $payload,
