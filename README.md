@@ -1,6 +1,8 @@
 # Tokenizer
 PHP JWT library that allows you to create trustworthy links from and to your website or webapp
 
+[![Build Status](https://travis-ci.org/giftuals/tokenizer.svg?branch=master)](https://travis-ci.org/giftuals/tokenizer)
+
 ## Requirements
 * PHP >= 7.2.0
 
